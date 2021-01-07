@@ -12,20 +12,10 @@ import java.util.Map;
 @RestController
 public class Controller {
 
-    @Autowired
-    private MQTemplate mqTemplate;
-
     @GetMapping(value = {"", "index", "/"})
     public ModelAndView index(ModelAndView mv) {
         mv.setViewName("index");
         return mv;
     }
 
-    @PostMapping(value = "send")
-    public Map<String, String> send(String message) {
-        Map<String, String> result = new HashMap<>();
-        mqTemplate.sendMessage("helloworld", message);
-        result.put("code", "200");
-        return result;
-    }
 }
