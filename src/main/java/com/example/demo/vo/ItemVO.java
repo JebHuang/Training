@@ -1,5 +1,6 @@
 package com.example.demo.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -19,9 +20,13 @@ public class ItemVO {
 
     private String type;
     private String content;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm", timezone = "Asia/Shanghai")
     private Date createDate;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm", timezone = "Asia/Shanghai")
     private Date updateDate;
     private String deal;
+    private String purpose;
 
     private Long handlerId;
+    private String handlerName;
 }

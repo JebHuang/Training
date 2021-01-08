@@ -29,12 +29,12 @@
 
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item layuimini-setting">
-                    <a href="javascript:;">${userName!'-'}</a>
+                    <a href="javascript:;">${currentUser.username!'-'}</a>
                     <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="profile"
-                               data-icon="fa fa-gears">profile<span class="layui-badge-dot"></span></a>
-                        </dd>
+                        <#--                        <dd>-->
+                        <#--                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="profile"-->
+                        <#--                               data-icon="fa fa-gears">profile<span class="layui-badge-dot"></span></a>-->
+                        <#--                        </dd>-->
                         <#--                        <dd>-->
                         <#--                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="reset password"-->
                         <#--                               data-icon="fa fa-gears">reset password</a>-->
@@ -56,9 +56,9 @@
                 <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
                     <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
                 </li>
-<#--                <li class="layui-nav-item layuimini-select-bgcolor" lay-unselect>-->
-<#--                    <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>-->
-<#--                </li>-->
+                <#--                <li class="layui-nav-item layuimini-select-bgcolor" lay-unselect>-->
+                <#--                    <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>-->
+                <#--                </li>-->
             </ul>
         </div>
     </div>
@@ -139,9 +139,10 @@
         });
 
         $('.login-out').on("click", function () {
-            // todo: 增加 退出逻辑
             layer.msg('login out success', function () {
-                window.location = 'page/login-3.html';
+                $.get("/loginOut", {}, (res) => {
+                    window.location = "/";
+                });
             });
         });
     });

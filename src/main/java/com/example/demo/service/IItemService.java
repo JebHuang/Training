@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Item;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -11,5 +12,6 @@ import java.util.List;
 public interface IItemService {
     List<Item> list(Long handlerId, Integer type, Integer deal, Integer page, Integer pageSize);
     void saveItem(Item item);
-    void dealItem(Long itemId, Long handlerId);
+    void dealItem(Long itemId, String handlerId, String username);
+    Page<Item> page(String name, Long handlerId, Integer type, Integer deal, Integer page, Integer pageSize);
 }

@@ -10,8 +10,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum ItemTypeEnum {
-    CONSULT(2, "CONSULT"),
-    COMPLAINT(1, "COMPLAINT");
+    CONSULT(1, "Consult"),
+    SUGGESTION(2, "Suggestion"),
+    OTHER(3, "Other");
 
     private Integer code;
     private String desc;

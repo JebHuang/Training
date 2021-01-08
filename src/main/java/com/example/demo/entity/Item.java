@@ -1,6 +1,9 @@
 package com.example.demo.entity;
 
+import com.example.demo.common.PurposeTypeEnum;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +20,8 @@ import java.util.Date;
 @Data
 @Table(name = "item")
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +43,9 @@ public class Item {
     @Column(name = "type")
     private Integer type;
 
+    @Column(name = "purpose")
+    private Integer purpose;
+
     @Column(name = "content", nullable = false, length = 500)
     private String content;
 
@@ -51,5 +59,8 @@ public class Item {
     private Integer deal;
 
     @Column(name = "handler_id")
-    private Long handlerId;
+    private String handlerId;
+
+    @Column(name = "handler_name")
+    private String handlerName;
 }

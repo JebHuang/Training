@@ -9,17 +9,24 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">account</label>
         <div class="layui-input-block">
-            <input type="text" name="username" lay-verify="required" lay-reqtext="account can not be empty"
+            <input type="text" name="name" lay-verify="name"
                    placeholder="please type in account" value=""
                    class="layui-input">
             <tip> client name , eg: JackMa</tip>
         </div>
     </div>
     <div class="layui-form-item">
+        <label class="layui-form-label required">gender</label>
+        <div class="layui-input-block">
+            <input type="radio" name="gender" value="1" title="Male" checked="">
+            <input type="radio" name="gender" value="0" title="Female">
+        </div>
+    </div>
+    <div class="layui-form-item">
         <label class="layui-form-label required">contact</label>
         <div class="layui-input-block">
-            <input type="text" name="contact" lay-verify="required" lay-reqtext="contact can not be empty"
-                   placeholder="please type in contact" value=""
+            <input type="text" name="phone" lay-verify="contact" value=""
+                   placeholder="please type in contact"
                    class="layui-input">
             <tip> mobile or phone number , eg: 16131213213 (mobile) or 86453123 (phone)</tip>
         </div>
@@ -27,15 +34,16 @@
     <div class="layui-form-item">
         <label class="layui-form-label">email</label>
         <div class="layui-input-block">
-            <input type="text" name="contact" placeholder="please type in email" value="" class="layui-input">
+            <input type="text" name="email" placeholder="please type in email" lay-verify="myEmail"
+                   value="" class="layui-input">
             <tip> not required . eg: JackMa@ASL.com.hk</tip>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label required">type</label>
         <div class="layui-input-block">
-            <input type="radio" name="type" value="1" title="consult" checked="">
-            <input type="radio" name="type" value="2" title="suggestion">
+            <input type="radio" name="type" value="1" title="Consult" checked="">
+            <input type="radio" name="type" value="2" title="Suggestion">
             <input type="radio" name="type" value="3" title="Other">
         </div>
     </div>
@@ -54,7 +62,7 @@
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label required">description</label>
         <div class="layui-input-block">
-            <textarea name="remark" lay-verify="required" class="layui-textarea"
+            <textarea name="content" lay-verify="description" class="layui-textarea"
                       placeholder="please type in description"></textarea>
             <tip> descript the situation at least 15 characters and most 500 characters</tip>
         </div>
@@ -75,19 +83,79 @@
 
         //监听提交
         form.on('submit(saveBtn)', function (data) {
-            var index = layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            }, function () {
-
-                // 关闭弹出层
-                layer.close(index);
-
-                var iframeIndex = parent.layer.getFrameIndex(window.name);
-                parent.layer.close(iframeIndex);
-
+            var formData = data.field;
+            $.post("/item", formData, (res) => {
+                var {code, data, desc} = res;
+                if (0 === code) {
+                    layer.msg('submit success', {
+                        icon: 1,
+                        shade: 0.8,
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function () {
+                        //do something
+                        var iframeIndex = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(iframeIndex);
+                    });
+                } else {
+                    layer.msg('warning , detail : ' + desc, {
+                        icon: 3,
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function () {
+                    });
+                }
             });
-
             return false;
+        });
+
+        form.verify({
+            name: function (value, item) { //value：表单的值、item：表单的DOM对象
+                // rule0:can not be empty
+                if (!value) {
+                    return 'account can not be empty';
+                }
+                // rule1:no number
+                if (/^\d+\d+\d$/.test(value)) {
+                    return 'account can not be number';
+                }
+                // rule2: size 4-20
+                var length = value.length;
+                if (value && (length > 20 || length < 4)) {
+                    return 'account size should be between 4 and 20 characters ';
+                }
+            },
+            contact: function (value, item) { //value：表单的值、item：表单的DOM对象
+                // rule0:can not be empty
+                if (!value) {
+                    return 'contact can not be empty';
+                }
+                // rule1: number
+                if (!(/^\d+\d+\d$/.test(value))) {
+                    return 'contact should be number';
+                }
+                // rule2: size 4-20
+                var length = value.length;
+                if (value && (length > 20 || length < 4)) {
+                    return 'contact size should be between 4 and 20 characters ';
+                }
+            },
+            description: function (value, item) { //value：表单的值、item：表单的DOM对象
+                // rule0:can not be empty
+                if (!value) {
+                    return 'description can not be empty';
+                }
+                // rule1: size 15-500
+                var length = value.length;
+                if (value && (length > 500 || length < 15)) {
+                    return 'description size should be between 15 and 500 characters ';
+                }
+            },
+            myEmail: function (value, item) {
+                var pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                var flag = pattern.test(value);
+                if (value && !flag) {
+                    return 'email pattern is xxxx@xxxx.com';
+                }
+            }
         });
 
     });

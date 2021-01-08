@@ -42,7 +42,7 @@ public class ItemRepositoryTest {
         item.setEmail("li4@163.com");
         item.setGender(GenderTypeEnum.SIR.getCode());
         item.setCreateDate(new Date());
-        item.setType(ItemTypeEnum.COMPLAINT.getCode());
+        item.setType(ItemTypeEnum.SUGGESTION.getCode());
         item.setDeal(DealTypeEnum.UNPROCESSED.getCode());
         Item save = itemRepository.save(item);
         System.out.println(save.toString());
@@ -57,7 +57,7 @@ public class ItemRepositoryTest {
         item.setEmail("li4@163.com");
         item.setGender(GenderTypeEnum.SIR.getCode());
         item.setCreateDate(new Date());
-        item.setType(ItemTypeEnum.COMPLAINT.getCode());
+        item.setType(ItemTypeEnum.SUGGESTION.getCode());
         item.setDeal(DealTypeEnum.UNPROCESSED.getCode());
         itemService.saveItem(item);
         System.out.println("----------------");
@@ -84,7 +84,7 @@ public class ItemRepositoryTest {
 
     @Test
     public void update() {
-        itemService.dealItem(2L, 82781L);
+//        itemService.dealItem(2L, "82781L", currentUser.getUsername());
     }
 
     @Test

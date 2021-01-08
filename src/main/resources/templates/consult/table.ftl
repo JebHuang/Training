@@ -89,7 +89,7 @@
             margin-bottom: 0px;
         }
 
-        #fieldset{
+        #fieldset {
             padding-bottom: 10px;
         }
 
@@ -98,7 +98,6 @@
 <body>
 <div class="layuimini-container">
     <div class="layuimini-main">
-
         <fieldset class="table-search-fieldset" id="fieldset">
             <div class="layui-card">
                 <div class="layui-card-header"><i class="fa fa-warning icon"></i> Data Panel</div>
@@ -122,7 +121,7 @@
                                 <div class="panel layui-bg-number">
                                     <div class="panel-body">
                                         <div class="panel-title">
-                                            <span class="label pull-right layui-bg-cyan">now</span>
+                                            <span class="label pull-right layui-bg-green">now</span>
                                             <h5>Accomplish Count</h5>
                                         </div>
                                         <div class="panel-content">
@@ -141,9 +140,9 @@
                     <form class="layui-form layui-form-pane" action="">
                         <div class="layui-form-item">
                             <div class="layui-inline">
-                                <label class="layui-form-label">account</label>
+                                <label class="layui-form-label">client</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="username" autocomplete="off" class="layui-input">
+                                    <input type="text" name="name" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
@@ -159,18 +158,22 @@
         </fieldset>
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> make a consult
-                    <i class="layui-icon">&#xe654;</i>
-                </button>
+                <#if roles?contains("role_admin") || roles?contains("role_create")>
+                    <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> new consult
+                        <i class="layui-icon">&#xe654;</i>
+                    </button>
+                </#if>
             </div>
         </script>
 
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn layui-btn-xs data-count-edit" lay-event="handle"> handle
-                <i class="layui-icon">&#xe702;</i>
-            </a>
+            <#if roles?contains("role_admin") || roles?contains("role_process")>
+                <a class="layui-btn layui-btn layui-btn-xs data-count-edit" lay-event="handle"> handle
+                    <i class="layui-icon">&#xe702;</i>
+                </a>
+            </#if>
         </script>
 
     </div>
@@ -184,42 +187,51 @@
 
         table.render({
             elem: '#currentTableId',
-            url: '/static/api/table.json',
+            url: '/item',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print'],
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'id', width: 80, title: 'ID', sort: true},
-                {field: 'username', width: 150, title: 'client'},
-                {field: 'contact', width: 200, title: 'contact'},
-                {field: 'content', width: 200, title: 'description'},
-                {field: 'type', width: 130, title: 'type'},
+                {field: 'name', title: 'client'},
+                {field: 'phone', title: 'contact'},
+                {field: 'email', width: 200, title: 'email'},
+                {field: 'content', width: 300, title: 'description'},
+                {field: 'type', title: 'type'},
                 {field: 'createDate', width: 150, title: 'created date'},
                 {field: 'updateDate', width: 150, title: 'updated date'},
-                {field: 'isDeal', width: 130, title: 'status'},
-                {field: 'handler', width: 80, title: 'handler'},
-                {title: 'operations', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+                {field: 'deal', title: 'status'},
+                {field: 'handlerName', width: 80, title: 'handler'},
+                {title: 'operations', toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
             limit: 15,
             page: true,
+            request: {
+                name: "text"
+            },
             skin: 'line'
         });
 
+        // //上述方法等价于
+        // table.reload('currentTableId', {
+        //     where: { //设定异步数据接口的额外参数，任意设
+        //         name: 'xxx'
+        //     }
+        //     ,page: {
+        //         curr: 1 //重新从第 1 页开始
+        //     }
+        // }); //只重载数据
+
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {
-            var result = JSON.stringify(data.field);
-            layer.alert(result, {
-                title: '最终的搜索信息'
-            });
-
             //执行搜索重载
             table.reload('currentTableId', {
                 page: {
                     curr: 1
                 }
                 , where: {
-                    searchParams: result
+                    name: data.field.name
                 }
             }, 'data');
 
@@ -232,13 +244,16 @@
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
                 var index = layer.open({
-                    title: 'make a consult',
+                    title: 'new  consult',
                     type: 2,
                     shade: 0.2,
                     maxmin: false,
                     area: ['800px', '800px'],
                     shadeClose: true,
                     content: '/consult/add',
+                    end: function () {
+                        refreshTableAndData();
+                    }
                 });
                 $(window).on("resize", function () {
                     layer.full(index);
@@ -266,7 +281,10 @@
                     maxmin: false,
                     shadeClose: true,
                     area: ['800px', '800px'],
-                    content: '/consult/edit',
+                    content: '/consult/edit?id=' + data.id,
+                    end: function () {
+                        refreshTableAndData();
+                    }
                 });
                 $(window).on("resize", function () {
                     layer.full(index);
@@ -290,6 +308,20 @@
                 $("#accomplishCount").text(accomplishCount);
             })
         }
+
+        function refreshTableAndData() {
+            //执行搜索重载
+            table.reload('currentTableId', {
+                page: {
+                    curr: 1
+                }
+                , where: {
+                    name: ""
+                }
+            }, 'data');
+            refreshData();
+        }
+
     });
 
 </script>

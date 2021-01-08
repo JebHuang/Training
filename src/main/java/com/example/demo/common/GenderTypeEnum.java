@@ -10,8 +10,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum GenderTypeEnum {
-    MISS(0, "MISS"),
-    SIR(1, "SIR");
+    MISS(0, "Female"),
+    SIR(1, "Male");
 
     private Integer code;
     private String desc;

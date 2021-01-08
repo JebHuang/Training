@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -28,17 +29,17 @@ public class ItemServiceImpl implements IItemService {
     @Override
     public List<Item> list(Long handlerId, Integer type, Integer deal, Integer page, Integer pageSize) {
         Item item = new Item();
-        if (handlerId != null) {
-            item.setHandlerId(handlerId);
-        }
+//        if (handlerId != null) {
+//            item.setHandlerId(handlerId);
+//        }
         if (type != null) {
             item.setType(type);
         }
         if (deal != null) {
             item.setDeal(deal);
         }
-        List<Item> items = findByCondition(item, page, pageSize);
-        return items;
+        Page<Item> pageEntity = findByCondition(item, page, pageSize);
+        return pageEntity.getContent();
     }
 
     @Override
@@ -55,7 +56,7 @@ public class ItemServiceImpl implements IItemService {
 
     @Override
     @Transactional
-    public void dealItem(Long itemId, Long handlerId) {
+    public void dealItem(Long itemId, String handlerId, String username) {
         if (itemId == null) {
             throw new RuntimeException("item id can't empty");
         }
@@ -64,16 +65,34 @@ public class ItemServiceImpl implements IItemService {
             item.setUpdateDate(new Date());
             item.setHandlerId(handlerId);
             item.setDeal(DealTypeEnum.PROCESSED.getCode());
+            item.setHandlerName(username);
             itemRepository.save(item);
         }
     }
 
-    private List<Item> findByCondition(Item item, Integer page, Integer pageSize) {
+    private Page<Item> findByCondition(Item item, Integer page, Integer pageSize) {
         Sort.Order order = Sort.Order.desc("id");
         Sort sort = Sort.by(order);
-        PageRequest pageRequest = PageRequest.of(page, pageSize, sort);
+        PageRequest pageRequest = PageRequest.of(page - 1, pageSize, sort);
         Example<Item> example = Example.of(item);
-        Page<Item> all = itemRepository.findAll(example, pageRequest);
-        return all.getContent();
+        return itemRepository.findAll(example, pageRequest);
+    }
+
+    @Override
+    public Page<Item> page(String name, Long handlerId, Integer type, Integer deal, Integer page, Integer pageSize) {
+        Item item = new Item();
+//        if (handlerId != null) {
+//            item.setHandlerId(handlerId);
+//        }
+        if (type != null) {
+            item.setType(type);
+        }
+        if (deal != null) {
+            item.setDeal(deal);
+        }
+        if (!StringUtils.isEmpty(name)) {
+            item.setName(name);
+        }
+        return findByCondition(item, page, pageSize);
     }
 }
