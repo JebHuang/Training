@@ -170,9 +170,15 @@
 
         <script type="text/html" id="currentTableBar">
             <#if roles?contains("role_admin") || roles?contains("role_process")>
-                <a class="layui-btn layui-btn layui-btn-xs data-count-edit" lay-event="handle"> handle
-                    <i class="layui-icon">&#xe702;</i>
-                </a>
+                {{#  if(d.deal != 'Accomplish'){ }}
+                    <a class="layui-btn layui-btn layui-btn-xs data-count-edit" lay-event="handle"> Handle
+                        <i class="layui-icon">&#xe702;</i>
+                    </a>
+                {{#  } else { }}
+                    <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="handle"> Detail
+                        <i class="layui-icon">&#xe60b;</i>
+                    </a>
+                {{#  } }}
             </#if>
         </script>
 
@@ -199,10 +205,10 @@
                 {field: 'content', width: 300, title: 'Description'},
                 {field: 'type', title: 'Type'},
                 {field: 'createDate', width: 150, title: 'Created date'},
-                {field: 'updateDate', width: 150, title: 'updated date'},
+                {field: 'updateDate', width: 150, title: 'Updated date'},
                 {field: 'deal', title: 'Status'},
                 {field: 'handlerName', width: 80, title: 'Handler'},
-                {title: 'operations', toolbar: '#currentTableBar', align: "center"}
+                {title: 'Operations', toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
             limit: 15,
