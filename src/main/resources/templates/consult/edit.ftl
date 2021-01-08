@@ -17,31 +17,31 @@
 <input type="hidden" id="id" value="${item.id!'0'}">
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label ">account : </label>
+        <label class="layui-form-label ">Account : </label>
         <div class="layui-input-block">
             <label class="form_view">${item.name!'-'}</label>
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label ">gender : </label>
+        <label class="layui-form-label ">Gender : </label>
         <div class="layui-input-block">
             <label class="form_view">${item.sex!'-'}</label>
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label ">contact : </label>
+        <label class="layui-form-label ">Contact : </label>
         <div class="layui-input-block">
             <label class="form_view">${item.phone!'-'}</label>
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">email : </label>
+        <label class="layui-form-label">Email : </label>
         <div class="layui-input-block">
             <label class="form_view">${item.email!'-'}</label>
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label ">type : </label>
+        <label class="layui-form-label ">Type : </label>
         <div class="layui-input-block">
             <input type="radio" name="type" value="1" title="Consult" disabled <#if item.type=='Consult'>checked</#if>>
             <input type="radio" name="type" value="2" title="Suggestion" disabled
@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label ">purpose : </label>
+        <label class="layui-form-label ">Purpose : </label>
         <div class="layui-input-block">
             <input type="radio" name="purpose" value="1" title="Deposit" disabled
                    <#if item.purpose=='Deposit'>checked</#if>>
@@ -69,14 +69,14 @@
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label ">description : </label>
+        <label class="layui-form-label ">Description : </label>
         <div class="layui-input-block">
             <label class="form_view">${item.content!'-'}</label>
         </div>
     </div>
 
     <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label ">handle result : </label>
+        <label class="layui-form-label ">Handle result : </label>
         <div class="layui-input-block">
             <textarea name="handleResult" lay-verify="handleResult" class="layui-textarea"
                       placeholder="please type in handle result">${item.result!'-'}</textarea>

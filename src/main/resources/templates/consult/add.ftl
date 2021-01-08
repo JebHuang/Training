@@ -7,7 +7,7 @@
 <body>
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label required">account</label>
+        <label class="layui-form-label required">Account</label>
         <div class="layui-input-block">
             <input type="text" name="name" lay-verify="name"
                    placeholder="please type in account" value=""
@@ -16,14 +16,14 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">gender</label>
+        <label class="layui-form-label required">Gender</label>
         <div class="layui-input-block">
             <input type="radio" name="gender" value="1" title="Male" checked="">
             <input type="radio" name="gender" value="0" title="Female">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">contact</label>
+        <label class="layui-form-label required">Contact</label>
         <div class="layui-input-block">
             <input type="text" name="phone" lay-verify="contact" value=""
                    placeholder="please type in contact"
@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">email</label>
+        <label class="layui-form-label">Email</label>
         <div class="layui-input-block">
             <input type="text" name="email" placeholder="please type in email" lay-verify="myEmail"
                    value="" class="layui-input">
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">type</label>
+        <label class="layui-form-label required">Type</label>
         <div class="layui-input-block">
             <input type="radio" name="type" value="1" title="Consult" checked="">
             <input type="radio" name="type" value="2" title="Suggestion">
@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">purpose</label>
+        <label class="layui-form-label required">Purpose</label>
         <div class="layui-input-block">
             <input type="radio" name="purpose" value="1" title="Deposit" checked="">
             <input type="radio" name="purpose" value="2" title="Credit Card">
@@ -60,7 +60,7 @@
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label required">description</label>
+        <label class="layui-form-label required">Description</label>
         <div class="layui-input-block">
             <textarea name="content" lay-verify="description" class="layui-textarea"
                       placeholder="please type in description"></textarea>
