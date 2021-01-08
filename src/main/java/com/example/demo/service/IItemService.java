@@ -9,9 +9,7 @@ import java.util.List;
  * @date 2021/1/7 18:16
  */
 public interface IItemService {
+    List<Item> list(Long handlerId, Integer type, Integer deal, Integer page, Integer pageSize);
     void saveItem(Item item);
-    List<Item> listAllItem();
-    List<Item> listUnDealItem();
-    List<Item> listItemByUserId();
-    List<Item> listItemByHandlerId();
+    void dealItem(Long itemId, Long handlerId);
 }

@@ -3,43 +3,174 @@
 <head>
     <#include "../common/head.ftl"/>
     <link rel="stylesheet" href="/static/css/public.css" media="all">
+    <style>
+        .layui-card {
+            border: 1px solid #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .icon {
+            margin-right: 10px;
+            color: #1aa094;
+        }
+
+        .layuimini-qiuck-module a i {
+            display: inline-block;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 2px;
+            font-size: 30px;
+            background-color: #F8F8F8;
+            color: #333;
+            transition: all .3s;
+            -webkit-transition: all .3s;
+        }
+
+        .layuimini-qiuck-module a cite {
+            position: relative;
+            top: 2px;
+            display: block;
+            color: #666;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .welcome-module {
+            width: 100%;
+            height: 80px;
+        }
+
+        .panel {
+            background-color: #fff;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .05)
+        }
+
+        .panel-body {
+            padding: 10px
+        }
+
+        .panel-title {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 12px;
+            color: inherit
+        }
+
+        .label {
+            display: inline;
+            padding: .2em .6em .3em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25em;
+            margin-top: .3em;
+        }
+
+        .main_btn > p {
+            height: 40px;
+        }
+
+        .layui-bg-number {
+            background-color: #F8F8F8;
+        }
+
+        .layui-form-item {
+            margin-bottom: 0px;
+        }
+
+        #fieldset{
+            padding-bottom: 10px;
+        }
+
+    </style>
 </head>
 <body>
 <div class="layuimini-container">
     <div class="layuimini-main">
 
-        <#--        <fieldset class="table-search-fieldset">-->
-        <#--            <legend>搜索信息</legend>-->
-        <#--            <div style="margin: 10px 10px 10px 10px">-->
-        <#--                <form class="layui-form layui-form-pane" action="">-->
-        <#--                    <div class="layui-form-item">-->
-        <#--                        <div class="layui-inline">-->
-        <#--                            <label class="layui-form-label">用户姓名</label>-->
-        <#--                            <div class="layui-input-inline">-->
-        <#--                                <input type="text" name="username" autocomplete="off" class="layui-input">-->
-        <#--                            </div>-->
-        <#--                        </div>-->
-        <#--                        <div class="layui-inline">-->
-        <#--                            <button type="submit" class="layui-btn layui-btn-primary" lay-submit-->
-        <#--                                    lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索-->
-        <#--                            </button>-->
-        <#--                        </div>-->
+        <fieldset class="table-search-fieldset" id="fieldset">
+            <div class="layui-card">
+                <div class="layui-card-header"><i class="fa fa-warning icon"></i> Data Panel</div>
+                <div class="layui-card-body">
+                    <div class="welcome-module">
+                        <div class="layui-row layui-col-space10">
+                            <div class="layui-col-xs6">
+                                <div class="panel layui-bg-number">
+                                    <div class="panel-body">
+                                        <div class="panel-title">
+                                            <span class="label pull-right layui-bg-blue">now</span>
+                                            <h5>In Process Count</h5>
+                                        </div>
+                                        <div class="panel-content">
+                                            <h1 class="no-margins" id="inProcessCount">-</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs6">
+                                <div class="panel layui-bg-number">
+                                    <div class="panel-body">
+                                        <div class="panel-title">
+                                            <span class="label pull-right layui-bg-cyan">now</span>
+                                            <h5>Accomplish Count</h5>
+                                        </div>
+                                        <div class="panel-content">
+                                            <h1 class="no-margins" id="accomplishCount">-</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header"><i class="fa fa-search icon"></i> Search Panel</div>
+                <div class="layui-card-body">
+                    <form class="layui-form layui-form-pane" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">account</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="username" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button type="submit" class="layui-btn layui-btn-primary" lay-submit
+                                        lay-filter="data-search-btn"><i class="layui-icon"></i> search
+                                </button>
+                            </div>
 
-        <#--                    </div>-->
-        <#--                </form>-->
-        <#--            </div>-->
-        <#--        </fieldset>-->
-
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </fieldset>
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加</button>
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> make a consult
+                    <i class="layui-icon">&#xe654;</i>
+                </button>
             </div>
         </script>
 
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn layui-btn-xs data-count-edit" lay-event="handle">处理</a>
+            <a class="layui-btn layui-btn layui-btn-xs data-count-edit" lay-event="handle"> handle
+                <i class="layui-icon">&#xe702;</i>
+            </a>
         </script>
 
     </div>
@@ -55,22 +186,19 @@
             elem: '#currentTableId',
             url: '/static/api/table.json',
             toolbar: '#toolbarDemo',
-            defaultToolbar: ['filter', 'exports', 'print', {
-                title: '提示',
-                layEvent: 'LAYTABLE_TIPS',
-                icon: 'layui-icon-tips'
-            }],
+            defaultToolbar: ['filter', 'exports', 'print'],
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'id', width: 80, title: 'ID', sort: true},
-                {field: 'username', width: 150, title: '关联咨询用户'},
-                {field: 'content', width: 200, title: '咨询内容'},
-                {field: 'type', width: 130, title: '咨询类型'},
-                {field: 'createDate', width: 150, title: '咨询日期'},
-                {field: 'updateDate', width: 150, title: '更新日期'},
-                {field: 'isDeal', width: 130, title: '处理状态'},
-                {field: 'handler', width: 80, title: '处理人'},
-                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+                {field: 'username', width: 150, title: 'client'},
+                {field: 'contact', width: 200, title: 'contact'},
+                {field: 'content', width: 200, title: 'description'},
+                {field: 'type', width: 130, title: 'type'},
+                {field: 'createDate', width: 150, title: 'created date'},
+                {field: 'updateDate', width: 150, title: 'updated date'},
+                {field: 'isDeal', width: 130, title: 'status'},
+                {field: 'handler', width: 80, title: 'handler'},
+                {title: 'operations', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
             limit: 15,
@@ -104,14 +232,12 @@
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
                 var index = layer.open({
-                    title: '添加',
+                    title: 'make a consult',
                     type: 2,
                     shade: 0.2,
                     maxmin: false,
-                    maxWidth: 360,
-                    maxHeight: 360,
+                    area: ['800px', '800px'],
                     shadeClose: true,
-                    area: ['100%', '100%'],
                     content: '/consult/add',
                 });
                 $(window).on("resize", function () {
@@ -134,12 +260,12 @@
             if (obj.event === 'handle') {
 
                 var index = layer.open({
-                    title: '处理',
+                    title: 'handle',
                     type: 2,
                     shade: 0.2,
-                    maxmin: true,
+                    maxmin: false,
                     shadeClose: true,
-                    area: ['100%', '100%'],
+                    area: ['800px', '800px'],
                     content: '/consult/edit',
                 });
                 $(window).on("resize", function () {
@@ -154,7 +280,18 @@
             }
         });
 
+        refreshData();
+
+        function refreshData() {
+            $.get("/consult/data", null, (res) => {
+                var inProcessCount = res.inProcessCount ? res.inProcessCount : '-';
+                var accomplishCount = res.accomplishCount ? res.accomplishCount : '-';
+                $("#inProcessCount").text(inProcessCount);
+                $("#accomplishCount").text(accomplishCount);
+            })
+        }
     });
+
 </script>
 </body>
 </html>

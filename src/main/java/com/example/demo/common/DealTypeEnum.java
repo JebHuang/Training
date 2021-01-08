@@ -9,15 +9,15 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum UserTypeEnum {
-    ADMIN(2, "经理"),
-    NORMAL(1, "用户");
+public enum DealTypeEnum {
+    PROCESSED(1, "PROCESSED"),
+    UNPROCESSED(0, "UNPROCESSED");
 
     private Integer code;
     private String desc;
 
     public static String getDesc(Integer code) {
-        for (UserTypeEnum type : UserTypeEnum.values()) {
+        for (DealTypeEnum type : DealTypeEnum.values()) {
             if (type.getCode().equals(code)) {
                 return type.getDesc();
             }

@@ -3,40 +3,67 @@
 <head>
     <#include "../common/head.ftl"/>
     <link rel="stylesheet" href="/static/css/public.css" media="all">
+    <style>
+        .form_view {
+            float: left;
+            display: block;
+            padding: 9px 0px;
+            /* width: 80px; */
+            font-weight: 400;
+            line-height: 20px;
+        }
+    </style>
 </head>
 <body>
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label ">关联用户</label>
+        <label class="layui-form-label ">account : </label>
         <div class="layui-input-block">
-            <input type="text" name="username"  value="陈先生" class="layui-input" disabled>
-            <tip>关联用户不能修改。</tip>
+            <label class="form_view">JackMa</label>
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label ">联系方式</label>
+        <label class="layui-form-label ">contact : </label>
         <div class="layui-input-block">
-            <input type="text" name="mobile"  value="13645454646" class="layui-input" disabled>
+            <label class="form_view">13610181213</label>
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">咨询类型</label>
+        <label class="layui-form-label">email : </label>
         <div class="layui-input-block">
-            <input type="radio" name="type" value="1" title="咨询" checked="" disabled>
-            <input type="radio" name="type" value="2" title="投诉" disabled>
+            <label class="form_view">JackMa@ASL.com.hk</label>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label ">type : </label>
+        <div class="layui-input-block">
+            <input type="radio" name="type" value="1" title="consult" checked="" disabled>
+            <input type="radio" name="type" value="2" title="suggestion" disabled>
+            <input type="radio" name="type" value="3" title="Other" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label ">purpose : </label>
+        <div class="layui-input-block">
+            <input type="radio" name="purpose" value="1" title="Deposit" checked="" disabled>
+            <input type="radio" name="purpose" value="2" title="Credit Card" disabled>
+            <input type="radio" name="purpose" value="3" title="Personal Loan" disabled>
+            <input type="radio" name="purpose" value="4" title="Mortgage" disabled>
+            <input type="radio" name="purpose" value="5" title="Investment" disabled>
+            <input type="radio" name="purpose" value="6" title="Insurance" disabled>
+            <input type="radio" name="purpose" value="7" title="Other" disabled>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label required">咨询内容</label>
+        <label class="layui-form-label ">description : </label>
         <div class="layui-input-block">
-            <textarea name="remark" lay-verify="required" class="layui-textarea" placeholder="请输入咨询内容" disabled>咨询内容1234567890</textarea>
-            <tip>咨询内容不能修改。</tip>
+            <label class="form_view">descript the situation at least 15 characters and most 500 characters descript the situation at least 15 characters and most 500 characters descript the situation at least 15 characters and most 500 characters descript the situation at least 15 characters and most 500 characters descript the situation at least 15 characters and most 500 characters</label>
         </div>
     </div>
 
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">处理完成</button>
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn"> deal</button>
         </div>
     </div>
 </div>

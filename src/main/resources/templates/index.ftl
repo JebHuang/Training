@@ -28,7 +28,25 @@
             </ul>
 
             <ul class="layui-nav layui-layout-right">
-
+                <li class="layui-nav-item layuimini-setting">
+                    <a href="javascript:;">${userName!'-'}</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="profile"
+                               data-icon="fa fa-gears">profile<span class="layui-badge-dot"></span></a>
+                        </dd>
+                        <#--                        <dd>-->
+                        <#--                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="reset password"-->
+                        <#--                               data-icon="fa fa-gears">reset password</a>-->
+                        <#--                        </dd>-->
+                        <dd>
+                            <hr>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" class="login-out">sign out</a>
+                        </dd>
+                    </dl>
+                </li>
                 <li class="layui-nav-item" lay-unselect>
                     <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
                 </li>
@@ -38,28 +56,9 @@
                 <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
                     <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
                 </li>
-                <li class="layui-nav-item layuimini-setting">
-                    <a href="javascript:;">${userName!'未登陆'}</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料"
-                               data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码"
-                               data-icon="fa fa-gears">修改密码</a>
-                        </dd>
-                        <dd>
-                            <hr>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" class="login-out">退出登录</a>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item layuimini-select-bgcolor" lay-unselect>
-                    <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>
-                </li>
+<#--                <li class="layui-nav-item layuimini-select-bgcolor" lay-unselect>-->
+<#--                    <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>-->
+<#--                </li>-->
             </ul>
         </div>
     </div>
@@ -140,7 +139,8 @@
         });
 
         $('.login-out').on("click", function () {
-            layer.msg('退出登录成功', function () {
+            // todo: 增加 退出逻辑
+            layer.msg('login out success', function () {
                 window.location = 'page/login-3.html';
             });
         });
