@@ -108,7 +108,7 @@
                                 <div class="panel layui-bg-number">
                                     <div class="panel-body">
                                         <div class="panel-title">
-                                            <span class="label pull-right layui-bg-blue">now</span>
+                                            <span class="label pull-right layui-bg-blue">Now</span>
                                             <h5>In Process Count</h5>
                                         </div>
                                         <div class="panel-content">
@@ -121,7 +121,7 @@
                                 <div class="panel layui-bg-number">
                                     <div class="panel-body">
                                         <div class="panel-title">
-                                            <span class="label pull-right layui-bg-green">now</span>
+                                            <span class="label pull-right layui-bg-green">Now</span>
                                             <h5>Accomplish Count</h5>
                                         </div>
                                         <div class="panel-content">
@@ -140,14 +140,14 @@
                     <form class="layui-form layui-form-pane" action="">
                         <div class="layui-form-item">
                             <div class="layui-inline">
-                                <label class="layui-form-label">client</label>
+                                <label class="layui-form-label">Client</label>
                                 <div class="layui-input-inline">
                                     <input type="text" name="name" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
                                 <button type="submit" class="layui-btn layui-btn-primary" lay-submit
-                                        lay-filter="data-search-btn"><i class="layui-icon"></i> search
+                                        lay-filter="data-search-btn"><i class="layui-icon"></i> Search
                                 </button>
                             </div>
 
@@ -159,7 +159,7 @@
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
                 <#if roles?contains("role_admin") || roles?contains("role_create")>
-                    <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> new consult
+                    <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> New Consult
                         <i class="layui-icon">&#xe654;</i>
                     </button>
                 </#if>
@@ -193,15 +193,15 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'id', width: 80, title: 'ID', sort: true},
-                {field: 'name', title: 'client'},
-                {field: 'phone', title: 'contact'},
-                {field: 'email', width: 200, title: 'email'},
-                {field: 'content', width: 300, title: 'description'},
-                {field: 'type', title: 'type'},
-                {field: 'createDate', width: 150, title: 'created date'},
+                {field: 'name', title: 'Client'},
+                {field: 'phone', title: 'Contact'},
+                {field: 'email', width: 200, title: 'Email'},
+                {field: 'content', width: 300, title: 'Description'},
+                {field: 'type', title: 'Type'},
+                {field: 'createDate', width: 150, title: 'Created date'},
                 {field: 'updateDate', width: 150, title: 'updated date'},
-                {field: 'deal', title: 'status'},
-                {field: 'handlerName', width: 80, title: 'handler'},
+                {field: 'deal', title: 'Status'},
+                {field: 'handlerName', width: 80, title: 'Handler'},
                 {title: 'operations', toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
