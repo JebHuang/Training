@@ -1,30 +1,30 @@
 {
   "homeInfo": {
-    "title": "首页",
+    "title": "home",
     "href": "welcome"
   },
   "logoInfo": {
-    "title": "管理系统",
+    "title": "Manage System",
     "image": "/static/images/logo.png",
     "href": ""
   },
   "menuInfo": [
     {
-      "title": "常规管理",
+      "title": "Normal Manage",
       "icon": "fa fa-address-book",
       "href": "",
       "target": "_self",
       "child": [
         {
-          "title": "电话咨询管理",
+          "title": "Consult",
           "href": "",
-          "icon": "fa fa-home",
+          "icon": "fa fa-phone",
           "target": "_self",
           "child": [
             {
-              "title": "咨询处理",
+              "title": "Handle",
               "href": "consult/table",
-              "icon": "fa fa-tachometer",
+              "icon": "fa fa-table",
               "target": "_self"
             }
           ]

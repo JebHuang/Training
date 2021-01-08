@@ -263,11 +263,11 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                         }
                     }).fail(function () {
                         layer.close(loading);
-                        return miniAdmin.error('清理缓存接口有误');
+                        return miniAdmin.error(' clear browser cache error');
                     });
                 } else {
                     layer.close(loading);
-                    return miniAdmin.success('清除缓存成功');
+                    return miniAdmin.success(' clear browser cache ');
                 }
             });
 
@@ -276,7 +276,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
              */
             $('body').on('click', '[data-refresh]', function () {
                 $(".layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();
-                miniAdmin.success('刷新成功');
+                miniAdmin.success(' refresh ');
             });
 
             /**
