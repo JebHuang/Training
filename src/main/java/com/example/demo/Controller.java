@@ -80,7 +80,7 @@ public class Controller extends BaseController {
     public ModelAndView consultEdit(Long id, ModelAndView mv, HttpServletRequest request) {
         AdminUser currentUser = getSessionAdminUser(request);
         Item item = null;
-        Item backUpItem = new Item(0L, "-", 0, "-", "-", 0, 0, "-", null, null, 0, "-", "-");
+        Item backUpItem = new Item(0L, "-", 0, "-", "-", 0, 0, "-", null, null, 0, "-", "-","-");
         if (null != id) {
             Optional<Item> opItem = itemRepository.findById(id);
             item = opItem.orElse(backUpItem);

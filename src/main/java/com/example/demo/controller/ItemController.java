@@ -57,9 +57,11 @@ public class ItemController extends BaseController {
     }
 
     @PostMapping("/deal")
-    public Result<Boolean> dealItem(@RequestParam(name = "id") Long id, HttpServletRequest request) {
+    public Result<Boolean> dealItem(@RequestParam(name = "id") Long id,
+                                    @RequestParam(name = "result") String result,
+                                    HttpServletRequest request) {
         AdminUser currentUser = getSessionAdminUser(request);
-        itemService.dealItem(id, currentUser.getUserId(),currentUser.getUsername());
+        itemService.dealItem(id, currentUser.getUserId(), currentUser.getUsername(),result);
         return new Result<>(true);
     }
 

@@ -56,7 +56,7 @@ public class ItemServiceImpl implements IItemService {
 
     @Override
     @Transactional
-    public void dealItem(Long itemId, String handlerId, String username) {
+    public void dealItem(Long itemId, String handlerId, String username, String result) {
         if (itemId == null) {
             throw new RuntimeException("item id can't empty");
         }
@@ -66,6 +66,7 @@ public class ItemServiceImpl implements IItemService {
             item.setHandlerId(handlerId);
             item.setDeal(DealTypeEnum.PROCESSED.getCode());
             item.setHandlerName(username);
+            item.setResult(result);
             itemRepository.save(item);
         }
     }

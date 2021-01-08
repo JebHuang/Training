@@ -1,7 +1,7 @@
 {
   "homeInfo": {
     "title": "home",
-    "href": "welcome"
+    "href": "/welcome"
   },
   "logoInfo": {
     "title": "Manage System",

@@ -29,4 +29,5 @@ public class ItemVO {
 
     private Long handlerId;
     private String handlerName;
+    private String result;
 }

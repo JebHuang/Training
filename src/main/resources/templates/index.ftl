@@ -146,6 +146,7 @@
             });
         });
     });
+    window.location = "/#/consult/table"
 </script>
 </body>
 </html>
