@@ -26,8 +26,8 @@ public class Item {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @Column(name = "name", nullable = false, length = 100)
-    private Integer sex;
+    @Column(name = "gender", nullable = false, length = 100)
+    private Integer gender;
 
     @Column(name = "email", length = 100)
     private String email;

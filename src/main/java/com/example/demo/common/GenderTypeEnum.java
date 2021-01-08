@@ -9,15 +9,15 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum SexTypeEnum {
-    MISS(2, "MISS"),
+public enum GenderTypeEnum {
+    MISS(0, "MISS"),
     SIR(1, "SIR");
 
     private Integer code;
     private String desc;
 
     public static String getDesc(Integer code) {
-        for (SexTypeEnum type : SexTypeEnum.values()) {
+        for (GenderTypeEnum type : GenderTypeEnum.values()) {
             if (type.getCode().equals(code)) {
                 return type.getDesc();
             }

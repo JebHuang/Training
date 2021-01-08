@@ -10,8 +10,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum DealTypeEnum {
-    PROCESSED(2, "PROCESSED"),
-    UNPROCESSED(1, "UNPROCESSED");
+    PROCESSED(1, "PROCESSED"),
+    UNPROCESSED(0, "UNPROCESSED");
 
     private Integer code;
     private String desc;

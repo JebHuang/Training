@@ -59,11 +59,13 @@ public class ItemServiceImpl implements IItemService {
         if (itemId == null) {
             throw new RuntimeException("item id can't empty");
         }
-        Item item = new Item();
-        item.setUpdateDate(new Date());
-        item.setHandlerId(handlerId);
-        item.setDeal(DealTypeEnum.PROCESSED.getCode());
-        itemRepository.save(item);
+        Item item = itemRepository.getOne(itemId);
+        if (item != null) {
+            item.setUpdateDate(new Date());
+            item.setHandlerId(handlerId);
+            item.setDeal(DealTypeEnum.PROCESSED.getCode());
+            itemRepository.save(item);
+        }
     }
 
     private List<Item> findByCondition(Item item, Integer page, Integer pageSize) {

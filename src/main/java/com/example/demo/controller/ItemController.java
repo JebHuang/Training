@@ -4,7 +4,7 @@ import com.example.demo.vo.ItemVO;
 import com.example.demo.common.DealTypeEnum;
 import com.example.demo.common.ItemTypeEnum;
 import com.example.demo.common.Result;
-import com.example.demo.common.SexTypeEnum;
+import com.example.demo.common.GenderTypeEnum;
 import com.example.demo.entity.Item;
 import com.example.demo.service.IItemService;
 import org.springframework.beans.BeanUtils;
@@ -60,7 +60,7 @@ public class ItemController {
     private ItemVO transalte(Item item) {
         ItemVO itemVO = new ItemVO();
         BeanUtils.copyProperties(item, itemVO);
-        itemVO.setSex(SexTypeEnum.getDesc(item.getSex()));
+        itemVO.setSex(GenderTypeEnum.getDesc(item.getGender()));
         itemVO.setDeal(DealTypeEnum.getDesc(item.getDeal()));
         itemVO.setType(ItemTypeEnum.getDesc(item.getType()));
         return itemVO;
