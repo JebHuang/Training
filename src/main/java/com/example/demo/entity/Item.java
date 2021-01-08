@@ -2,14 +2,11 @@ package com.example.demo.entity;
 
 import lombok.Data;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -26,9 +23,17 @@ public class Item {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    @Column(name = "name", nullable = false, length = 100)
+    private String name;
+
+    @Column(name = "name", nullable = false, length = 100)
+    private Integer sex;
+
+    @Column(name = "email", length = 100)
+    private String email;
+
+    @Column(name = "phone", nullable = false, length = 20)
+    private String phone;
 
     @Column(name = "type")
     private Integer type;
@@ -45,7 +50,6 @@ public class Item {
     @Column(name = "is_deal")
     private Integer deal;
 
-    @OneToOne
-    @JoinColumn(name = "handler_id", referencedColumnName = "id")
-    private User handler;
+    @Column(name = "handler_id")
+    private Long handlerId;
 }
