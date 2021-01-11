@@ -6,10 +6,7 @@ import com.example.demo.repository.IItemRepository;
 import com.example.demo.service.IItemService;
 import org.hibernate.internal.util.StringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -75,7 +72,10 @@ public class ItemServiceImpl implements IItemService {
         Sort.Order order = Sort.Order.desc("id");
         Sort sort = Sort.by(order);
         PageRequest pageRequest = PageRequest.of(page - 1, pageSize, sort);
-        Example<Item> example = Example.of(item);
+        // 对name字段进行包含模式匹配
+        ExampleMatcher exampleMatcher = ExampleMatcher.matching()
+                .withMatcher("name", ExampleMatcher.GenericPropertyMatcher::contains);
+        Example<Item> example = Example.of(item, exampleMatcher);
         return itemRepository.findAll(example, pageRequest);
     }
 

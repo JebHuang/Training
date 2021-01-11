@@ -61,7 +61,7 @@ public class ItemController extends BaseController {
                                     @RequestParam(name = "result") String result,
                                     HttpServletRequest request) {
         AdminUser currentUser = getSessionAdminUser(request);
-        itemService.dealItem(id, currentUser.getUserId(), currentUser.getUsername(),result);
+        itemService.dealItem(id, currentUser.getUserId(), currentUser.getUsername(), result);
         return new Result<>(true);
     }
 

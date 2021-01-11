@@ -7,10 +7,10 @@
 <body>
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label required">Account</label>
+        <label class="layui-form-label required">Client</label>
         <div class="layui-input-block">
             <input type="text" name="name" lay-verify="name"
-                   placeholder="please type in account" value=""
+                   placeholder="please type in client" value=""
                    class="layui-input">
             <tip> client name , eg: JackMa</tip>
         </div>
@@ -111,16 +111,16 @@
             name: function (value, item) { //value：表单的值、item：表单的DOM对象
                 // rule0:can not be empty
                 if (!value) {
-                    return 'account can not be empty';
+                    return 'client can not be empty';
                 }
                 // rule1:no number
                 if (/^\d+\d+\d$/.test(value)) {
-                    return 'account can not be number';
+                    return 'client can not be number';
                 }
                 // rule2: size 4-20
                 var length = value.length;
                 if (value && (length > 20 || length < 4)) {
-                    return 'account size should be between 4 and 20 characters ';
+                    return 'client size should be between 4 and 20 characters ';
                 }
             },
             contact: function (value, item) { //value：表单的值、item：表单的DOM对象

@@ -64,6 +64,6 @@ public class Item {
     @Column(name = "handler_name")
     private String handlerName;
 
-    @Column(name = "result", nullable = false, length = 500)
+    @Column(name = "result", nullable = true, length = 500)
     private String result;
 }

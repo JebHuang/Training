@@ -169,23 +169,27 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
+            {{#  if(d.deal != 'Accomplish'){ }}
             <#if roles?contains("role_admin") || roles?contains("role_process")>
-                {{#  if(d.deal != 'Accomplish'){ }}
-                    <a class="layui-btn layui-btn layui-btn-xs data-count-edit" lay-event="handle"> Handle
-                        <i class="layui-icon">&#xe702;</i>
-                    </a>
-                {{#  } else { }}
-                    <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="handle"> Detail
-                        <i class="layui-icon">&#xe60b;</i>
-                    </a>
-                {{#  } }}
+                <a class="layui-btn layui-btn layui-btn-xs data-count-edit" lay-event="handle"> Handle
+                    <i class="layui-icon">&#xe702;</i>
+                </a>
             </#if>
+            {{#  } else { }}
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="handle"> Detail
+                <i class="layui-icon">&#xe60b;</i>
+            </a>
+            {{#  } }}
         </script>
 
     </div>
 </div>
 <#include "../common/js.ftl"/>
 <script>
+    setTimeout(1000, () => {
+        var btnText = $(".layui-laypage-btn").text();
+        console.log(btnText);
+    })
     layui.use(['form', 'table'], function () {
         var $ = layui.jquery,
             form = layui.form,
@@ -195,7 +199,7 @@
             elem: '#currentTableId',
             url: '/item',
             toolbar: '#toolbarDemo',
-            defaultToolbar: ['filter', 'exports', 'print'],
+            defaultToolbar: ['filter'],
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'id', width: 80, title: 'ID', sort: true},
@@ -211,7 +215,7 @@
                 {title: 'Operations', toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
-            limit: 15,
+            limit: 10,
             page: true,
             request: {
                 name: "text"
@@ -316,15 +320,21 @@
         }
 
         function refreshTableAndData() {
-            //执行搜索重载
-            table.reload('currentTableId', {
-                page: {
-                    curr: 1
-                }
-                , where: {
-                    name: ""
-                }
+            // 执行搜索重载
+            table.reload('currentTableId', function (data,curr) {
+                //执行搜索重载
+                table.reload('currentTableId', {
+                    page: {
+                        curr: curr
+                    }
+                    , where: {
+                        name: data.field.name
+                    }
+                }, 'data');
+
+                return false;
             }, 'data');
+
             refreshData();
         }
 

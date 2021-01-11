@@ -45,7 +45,7 @@ public class Controller extends BaseController {
     @GetMapping(value = "loginOut")
     public String loginOut(HttpServletRequest request) {
         try {
-            logout(request);
+            super.logout(request);
         } catch (ServletException e) {
             log.error(e.getMessage(), e);
         }

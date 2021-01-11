@@ -17,7 +17,7 @@
 <input type="hidden" id="id" value="${item.id!'0'}">
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label ">Account : </label>
+        <label class="layui-form-label ">Client : </label>
         <div class="layui-input-block">
             <label class="form_view">${item.name!'-'}</label>
         </div>
@@ -43,29 +43,31 @@
     <div class="layui-form-item">
         <label class="layui-form-label ">Type : </label>
         <div class="layui-input-block">
-            <input type="radio" name="type" value="1" title="Consult" disabled <#if item.type=='Consult'>checked</#if>>
-            <input type="radio" name="type" value="2" title="Suggestion" disabled
-                   <#if item.type=='Suggestion'>checked</#if>>
-            <input type="radio" name="type" value="3" title="Other" disabled <#if item.type=='Other'>checked</#if>>
+            <label class="form_view">${item.type!'-'}</label>
+            <#--            <input type="radio" name="type" value="1" title="Consult" disabled <#if item.type=='Consult'>checked</#if>>-->
+            <#--            <input type="radio" name="type" value="2" title="Suggestion" disabled-->
+            <#--                   <#if item.type=='Suggestion'>checked</#if>>-->
+            <#--            <input type="radio" name="type" value="3" title="Other" disabled <#if item.type=='Other'>checked</#if>>-->
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label ">Purpose : </label>
         <div class="layui-input-block">
-            <input type="radio" name="purpose" value="1" title="Deposit" disabled
-                   <#if item.purpose=='Deposit'>checked</#if>>
-            <input type="radio" name="purpose" value="2" title="Credit Card" disabled
-                   <#if item.purpose=='Credit Card'>checked</#if>>
-            <input type="radio" name="purpose" value="3" title="Personal Loan" disabled
-                   <#if item.purpose=='Personal Loan'>checked</#if>>
-            <input type="radio" name="purpose" value="4" title="Mortgage" disabled
-                   <#if item.purpose=='Mortgage'>checked</#if>>
-            <input type="radio" name="purpose" value="5" title="Investment" disabled
-                   <#if item.purpose=='Investment'>checked</#if>>
-            <input type="radio" name="purpose" value="6" title="Insurance" disabled
-                   <#if item.purpose=='Insurance'>checked</#if>>
-            <input type="radio" name="purpose" value="7" title="Other" disabled
-                   <#if item.purpose=='Other'>checked</#if>>
+            <label class="form_view">${item.purpose!'-'}</label>
+            <#--            <input type="radio" name="purpose" value="1" title="Deposit" disabled-->
+            <#--                   <#if item.purpose=='Deposit'>checked</#if>>-->
+            <#--            <input type="radio" name="purpose" value="2" title="Credit Card" disabled-->
+            <#--                   <#if item.purpose=='Credit Card'>checked</#if>>-->
+            <#--            <input type="radio" name="purpose" value="3" title="Personal Loan" disabled-->
+            <#--                   <#if item.purpose=='Personal Loan'>checked</#if>>-->
+            <#--            <input type="radio" name="purpose" value="4" title="Mortgage" disabled-->
+            <#--                   <#if item.purpose=='Mortgage'>checked</#if>>-->
+            <#--            <input type="radio" name="purpose" value="5" title="Investment" disabled-->
+            <#--                   <#if item.purpose=='Investment'>checked</#if>>-->
+            <#--            <input type="radio" name="purpose" value="6" title="Insurance" disabled-->
+            <#--                   <#if item.purpose=='Insurance'>checked</#if>>-->
+            <#--            <input type="radio" name="purpose" value="7" title="Other" disabled-->
+            <#--                   <#if item.purpose=='Other'>checked</#if>>-->
         </div>
     </div>
     <div class="layui-form-item layui-form-text">

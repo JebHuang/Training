@@ -4,9 +4,9 @@
     "href": "/welcome"
   },
   "logoInfo": {
-    "title": "Manage System",
+    "title": "Call Center",
     "image": "/static/images/logo.png",
-    "href": ""
+    "href": "/#/consult/table"
   },
   "menuInfo": [
     {
