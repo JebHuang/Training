@@ -29,7 +29,7 @@
 
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item layuimini-setting">
-                    <a href="javascript:;">${currentUser.username!'-'}</a>
+                    <a href="javascript:;">${username!'-'}</a>
                     <dl class="layui-nav-child">
                         <#--                        <dd>-->
                         <#--                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="profile"-->
@@ -50,9 +50,9 @@
                 <li class="layui-nav-item" lay-unselect>
                     <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
                 </li>
-                <li class="layui-nav-item" lay-unselect>
-                    <a href="javascript:;" data-clear="清理" class="layuimini-clear"><i class="fa fa-trash-o"></i></a>
-                </li>
+<#--                <li class="layui-nav-item" lay-unselect>-->
+<#--                    <a href="javascript:;" data-clear="清理" class="layuimini-clear"><i class="fa fa-trash-o"></i></a>-->
+<#--                </li>-->
                 <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
                     <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
                 </li>
@@ -92,9 +92,9 @@
                         <li class="layui-nav-item">
                             <a href="javascript:;"><span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
-                                <dd><a href="javascript:;" layuimini-tab-close="current">关 闭 当 前</a></dd>
-                                <dd><a href="javascript:;" layuimini-tab-close="other">关 闭 其 他</a></dd>
-                                <dd><a href="javascript:;" layuimini-tab-close="all">关 闭 全 部</a></dd>
+                                <dd><a href="javascript:;" layuimini-tab-close="current">Close Current</a></dd>
+                                <dd><a href="javascript:;" layuimini-tab-close="other">Close Other</a></dd>
+                                <dd><a href="javascript:;" layuimini-tab-close="all">Close All</a></dd>
                             </dl>
                         </li>
                     </ul>
@@ -146,7 +146,7 @@
             });
         });
     });
-    window.location = "/#/consult/table"
+    window.location = "/#/emailForm"
 </script>
 </body>
 </html>

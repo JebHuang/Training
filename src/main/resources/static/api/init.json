@@ -6,7 +6,7 @@
   "logoInfo": {
     "title": "Call Center",
     "image": "/static/images/logo.png",
-    "href": "/#/consult/table"
+    "href": "/#/emailForm"
   },
   "menuInfo": [
     {
@@ -24,6 +24,12 @@
             {
               "title": "Handle",
               "href": "consult/table",
+              "icon": "fa fa-table",
+              "target": "_self"
+            },
+            {
+              "title": "EmailForm",
+              "href": "emailForm",
               "icon": "fa fa-table",
               "target": "_self"
             }

@@ -2,6 +2,8 @@
 <html>
 <head>
     <#include "./common/head.ftl"/>
+    <#-- 使用spring国际化，freemarker必须引入   -->
+    <#import "spring.ftl" as spring>
     <style>
         .my-body {
             left: 0;
@@ -10,7 +12,7 @@
 </head>
 <body class="layui-layout-body layuimini-all">
 <div class="layui-body my-body">
-    <h1>Welcome</h1>
+    <h1><@spring.message "welcome.title"/></h1>
 </div>
 <#include "./common/js.ftl"/>
 <script>
